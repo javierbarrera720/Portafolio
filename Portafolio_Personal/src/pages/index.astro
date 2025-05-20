@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug"
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="text-xl py-1">Hola a todos👋</div>
+    <div class="text-5xl font-bold">Soy Javier Barrera</div>
+    <div class="text-3xl py-3 font-bold">Desarrollador BackEnd .NET</div>
+    <div class="py-2">
+      <text class="text-lg">
+        Soy un desarrollador BackEnd especializado en el entorno de .NET y tecnologías relacionadas 
+        a Microsoft. Entusiasmado en resolver problemas, desafíos y retos que se me puedan presentar 
+        tanto en forma individual como grupal, por lo que soy proclive al trabajo en equipo. 
+        Buscando soluciones efectivas con el fin de conseguir un producto de calidad. 
+        Por lo cual sigo en constante esfuerzo para mejorar como profesional en constantes desafíos y aprendiendo de ellos        
+      </text>
+    </div>
+    <div class="mt-8">
+      <a class="btn" href="https://www.linkedin.com/in/-javierbarrera/" target="_blank"> Let's connect!</a>
+      <a href="https://github.com/javierbarrera720" target="_blank" class="btn btn-outline ml-5">
+        Get This template
+      </a>
+    </div>
+  </div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+  </div>
+
+  <HorizontalCard
+    title="Demo Project 1"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+    badge="NEW"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Demo Project 2"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Demo Project 3"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+    badge="FOSS"
+  />
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+  </div>
+
+  {
+    last_posts.map((post) => (
+      <>
+        <HorizontalCard
+          title={post.data.title}
+          img={post.data.heroImage}
+          desc={post.data.description}
+          url={"/blog/" + createSlug(post.data.title, post.slug)}
+          target="_self"
+          badge={post.data.badge}
+        />
+        <div class="divider my-0" />
+      </>
+    ))
+  }
+</BaseLayout>

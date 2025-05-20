@@ -1,0 +1,37 @@
+---
+const { title, subtitle } = Astro.props;
+---
+<div class="flex">
+  <div class="education__time">
+    <span class="w-4 h-4 bg-primary block rounded-full mt-1"></span>
+    <span class="education__line bg-primary block h-full w-[2px] translate-x-[7px]"></span>
+  </div>
+  <div class="experience__data bd-grid px-5">
+    <h3 class="font-semibold mb-1">{title}</h3>
+    <span class="font-light text-sm">{subtitle}</span>
+    
+    <div class="my-2 text-justify space-y-2">
+      <!-- Íconos de herramientas con tooltip (Paso 1) -->
+      <div class="flex gap-4 flex-wrap">
+        <img src="/icons/astro.svg" alt="Astro" title="Astro" class="w-6 h-6" />
+        <img src="/icons/react.svg" alt="React" title="React" class="w-6 h-6" />
+        <img src="/icons/node.svg" alt="Node.js" title="Node.js" class="w-6 h-6" />
+        <!-- Agrega más íconos aquí -->
+      </div>
+
+      <!-- Descripciones genéricas (Paso 2) -->
+      <ul class="text-sm text-gray-500 list-disc pl-4">
+        <li><strong>Astro:</strong> Framework moderno para construir sitios web rápidos y estáticos.</li>
+        <li><strong>React:</strong> Biblioteca de JavaScript para crear interfaces de usuario dinámicas.</li>
+        <li><strong>Node.js:</strong> Entorno de ejecución para JavaScript del lado del servidor.</li>
+        <!-- Agrega más descripciones según tus herramientas -->
+      </ul>
+
+      <!-- Resto del contenido que venga desde el slot -->
+      <p>
+        <slot />
+      </p>
+    </div>
+  </div>
+</div>
+

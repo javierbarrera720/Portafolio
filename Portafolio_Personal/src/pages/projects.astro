@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Proyectos" sideBarActiveItemID="projects">
+  <div class="text-3xl w-full font-bold mb-5">Mis proyectos</div>
+  <p class="mb-6 text-gray-500 dark:text-gray-400">
+    Esta sección mostrará los proyectos que he realizado. Cada uno incluirá una descripción breve, una imagen y un enlace a su repositorio en GitHub. ¡Muy pronto estarán disponibles!
+  </p>
+
+  <!-- Carrusel de proyectos -->
+  <div class="relative overflow-hidden">
+    <div class="flex overflow-x-auto gap-6 snap-x snap-mandatory pb-4">
+      <!-- Slide 1 -->
+      <div class="snap-start shrink-0 w-[300px] bg-white dark:bg-gray-800 shadow rounded-lg p-4">
+        <img src="/placeholder.webp" alt="Proyecto 1" class="rounded-lg mb-4" />
+        <h3 class="text-lg font-semibold">Próximamente...</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Aquí aparecerá un proyecto con descripción, tecnologías utilizadas y un enlace al repositorio.
+        </p>
+        <a href="#" class="inline-block mt-2 text-primary hover:underline">Ver repositorio</a>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="snap-start shrink-0 w-[300px] bg-white dark:bg-gray-800 shadow rounded-lg p-4">
+        <img src="/placeholder.webp" alt="Proyecto 2" class="rounded-lg mb-4" />
+        <h3 class="text-lg font-semibold">En construcción</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Próximo proyecto de backend con .NET en desarrollo. Pronto más detalles.
+        </p>
+        <a href="#" class="inline-block mt-2 text-primary hover:underline">Ver repositorio</a>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="snap-start shrink-0 w-[300px] bg-white dark:bg-gray-800 shadow rounded-lg p-4">
+        <img src="/placeholder.webp" alt="Proyecto 3" class="rounded-lg mb-4" />
+        <h3 class="text-lg font-semibold">Ideas futuras</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Planeando herramientas útiles para desarrolladores en el ecosistema Microsoft.
+        </p>
+        <a href="#" class="inline-block mt-2 text-primary hover:underline">Ver repositorio</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
