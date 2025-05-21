@@ -20,8 +20,36 @@ const {
 <!doctype html>
 <html lang="en" data-theme="lofi">
   <head>
-    <BaseHead title={title} description={description} image={image} , ogType={ogType} />
-    {TRANSITION_API && <ViewTransitions />}
+  <BaseHead title={title} description={description} image={image} , ogType={ogType} />
+  {TRANSITION_API && <ViewTransitions />}
+
+  <script is:inline>
+    const THEME_LIGHT = "lofi";
+    const THEME_DARK = "dark";
+    const ICON_LIGHT = "🌞";
+    const ICON_DARK = "🌙";
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+      const icon = document.getElementById("theme-icon");
+      if (icon) icon.textContent = theme === THEME_DARK ? ICON_LIGHT : ICON_DARK;
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme") || THEME_LIGHT;
+      const next = current === THEME_DARK ? THEME_LIGHT : THEME_DARK;
+      setTheme(next);
+    }
+
+    // Inicializa al cargar la página
+    try {
+      const saved = localStorage.getItem("theme") || THEME_LIGHT;
+      setTheme(saved);
+    } catch (e) {}
+  </script>
+</head>
+
   </head>
   <body>
     <div class="bg-base-100 drawer lg:drawer-open">
